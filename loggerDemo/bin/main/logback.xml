@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="aiAppender"
+		class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender">
+	</appender>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern> %d{yyyy-MM-dd HH:mm:ss.SSS}; %highlight([%level]) - %C.%M ,Line %L - %m%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<root level="ERROR">
+		<appender-ref ref="aiAppender" />
+	</root>
+
+	<logger name="org.springframework.web" level="ERROR">
+		<appender-ref ref="aiAppender" />
+		<appender-ref ref="console" />
+	</logger>
+
+	<logger name="com.example" level="INFO">
+		<appender-ref ref="aiAppender" />
+		<appender-ref ref="console" />
+	</logger>
+</configuration>

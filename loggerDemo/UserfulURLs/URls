@@ -1,0 +1,9 @@
+https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/src/main/java/com/microsoft/applicationinsights/boot/ApplicationInsightsProperties.java
+https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md
+https://docs.microsoft.com/en-us/azure/application-insights/app-insights-java-trace-logs
+https://stackoverflow.com/questions/46919565/unable-to-push-logs-to-application-insights-using-logback-appenders
+https://stackoverflow.com/questions/46919565/unable-to-push-logs-to-application-insights-using-logback-appenders?rq=1
+https://dzone.com/articles/configuring-logback-with-spring-boot
+https://docs.microsoft.com/en-us/azure/application-insights/app-insights-java-get-started
+https://dzone.com/articles/publish-springboot-logs-to-azure-log-analytics
+https://docs.microsoft.com/en-us/azure/application-insights/application-insights-data-model
