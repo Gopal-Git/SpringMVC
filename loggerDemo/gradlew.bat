@@ -1,3 +1,59 @@
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // Your string representation of key-value pairs
+        String keyValueString = "{ key1=value1, key2=value2=is=here, key3=value3 }";
+
+        // Convert to JSON-like object
+        JsonNode jsonObject = convertToJson(keyValueString);
+
+        // Key to check
+        String keyToCheck = "key2";
+
+        // Check if the key exists
+        if (doesKeyExist(jsonObject, keyToCheck)) {
+            System.out.println("Key exists: " + keyToCheck);
+        } else {
+            System.out.println("Key does not exist: " + keyToCheck);
+        }
+    }
+
+    // Function to convert a string to a JSON-like object
+    private static JsonNode convertToJson(String keyValueString) throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // Remove braces and spaces from the string
+        String cleanedString = keyValueString.replaceAll("[{}\\s]", "");
+
+        // Split the string into key-value pairs
+        String[] keyValuePairs = cleanedString.split(",");
+
+        // Create a JSON-like object
+        StringBuilder jsonString = new StringBuilder("{");
+        for (String pair : keyValuePairs) {
+            int equalIndex = pair.indexOf('=');
+
+            if (equalIndex > 0 && equalIndex < pair.length() - 1) {
+                String key = pair.substring(0, equalIndex).trim();
+                String value = pair.substring(equalIndex + 1).trim();
+                jsonString.append("\"").append(key).append("\":\"").append(value).append("\",");
+            }
+        }
+        jsonString.deleteCharAt(jsonString.length() - 1);  // Remove the trailing comma
+        jsonString.append("}");
+
+        return objectMapper.readTree(jsonString.toString());
+    }
+
+    // Function to check if a key exists in the JSON-like object
+    private static boolean doesKeyExist(JsonNode jsonObject, String keyToCheck) {
+        return jsonObject.has(keyToCheck);
+    }
+}
+
+
 @if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
